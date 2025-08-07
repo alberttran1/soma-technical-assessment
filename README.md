@@ -53,3 +53,23 @@ Implement a task dependency system that allows tasks to depend on other tasks. T
 3. Submit a link to your repository in the application form.
 
 Thanks for your time and effort. We'll be in touch soon!
+
+
+## Solution:
+
+1. Due date funcitonality has been added
+- due date defaults to current date
+- due date is optional and a task can be created without one as a general task
+- due date displayed in grey by default and red if current date is past due date
+
+2. Image generation is hooked up to task creation
+- if no results based on task name there is no image displayed
+- otherwise first image returned in pexels api search is returned and displayed with tasks
+
+3. Task dependencies added
+- dependencies can be added by dragging a task within another task, the outside task depends on whats inside of it
+- a task can haave multiple dependencies
+- a task cannot be set to be dependant on one of its dependencies (no circular dependencies)
+- critical path tasks are highlighted in red
+- all tasks have an "earliest possible start date" which is based on the duration of dependencies, the duration of all tasks in a parent task's dependency list are summed up recursively to a "required time before task start" value and the "earliest possible start date" is today's date + "required time before task start"
+- task dependencies are visualized by containment

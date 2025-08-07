@@ -8,7 +8,17 @@ datasource db {
 }
 
 model Todo {
-  id        Int      @id @default(autoincrement())
-  title     String
-  createdAt DateTime  @default(now())
+  id          Int       @id @default(autoincrement())
+  title       String
+  dueDate     DateTime?
+  imgURL      String?
+  createdAt   DateTime  @default(now())
+  order       Int       @default(0)
+  duration    Int
+
+  dependedById Int?
+  dependedBy   Todo?     @relation("TodoDependency", fields: [dependedById], references: [id])
+  dependsOn  Todo[]    @relation("TodoDependency")
+
+  @@unique([dependedById, order]) // Enforce uniqueness of order per parent
 }
