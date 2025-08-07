@@ -11,7 +11,7 @@ import DraggableTodoItem from './components/DraggableTodoItem';
 import BeginningDropZone from './components/BeginningDropZone';
 
 export default function Home() {
-  const [newTodo, setNewTodo] = useState<{ name: string; date?: Date; duration: number }>({ name: "", date: new Date(), duration: 1 });
+  const [newTodo, setNewTodo] = useState<{ name: string; date?: Date; duration?: number }>({ name: "", date: new Date(), duration: undefined});
   const [todos, setTodos] = useState<(Todo & { children: Todo[] })[]>([]);
   const [todoMap, setTodoMap] = useState<Map<number, Todo & { children: Todo[] }>>();
   const [durationBeforeStartMap, setDurationBeforeStartMap] = useState<Map<number, number>>(new Map());

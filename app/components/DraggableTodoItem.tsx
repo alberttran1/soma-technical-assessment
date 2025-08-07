@@ -109,7 +109,7 @@ const DraggableTodoItem = ({ todo, onDelete, loadingId, isCritical, todoMap, cri
               {todo.children.map((child) => (
                 <DraggableTodoItem
                   key={child.id}
-                  todo={{...todoMap?.get(child.id)!}}
+                  todo={{...child,children: todoMap?.get(child.id)?.children || []}}
                   onDelete={onDelete}
                   loadingId={loadingId}
                   isCritical={criticalPathIds?.has(child.id)}
